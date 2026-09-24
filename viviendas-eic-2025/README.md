@@ -1,6 +1,6 @@
 # Viviendas en San Pedro Mixtepec, Distrito 22 (EIC 2025)
 
-Una lectura pública de las viviendas particulares habitadas del municipio **20318, Oaxaca**. Incluye un [informe](INFORME.md), una [infografía](resultados/infografia.png) y una [nota metodológica](METODOLOGIA.md). El nombre completo importa: Oaxaca tiene otro San Pedro Mixtepec (Distrito 26).
+Una lectura pública de las viviendas particulares habitadas del municipio **20318, Oaxaca**. Incluye un [informe](INFORME.md), una [infografía](resultados/infografia.png) y una [nota metodológica](METODOLOGIA.md).
 
 ## Tres datos para empezar
 
