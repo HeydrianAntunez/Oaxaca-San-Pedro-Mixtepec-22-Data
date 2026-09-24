@@ -1,0 +1,11 @@
+﻿caracteristica,estimado,denominador,porcentaje,error_estandar_pp,ic90_porcentaje,cv_porcentaje
+Casa única en el terreno,11922,18771,63.51,1.67,"[60.73, 66.21]",2.62
+Casa que comparte terreno,4386,18771,23.37,1.33,"[21.25, 25.62]",5.68
+Casa dúplex,110,18771,0.59,0.27,"[0.28, 1.24]",45.86
+Departamento en edificio,157,18771,0.84,0.32,"[0.45, 1.55]",37.72
+Vivienda en vecindad o cuartería,2096,18771,11.17,1.28,"[9.23, 13.45]",11.44
+Cuarto de azotea,0,18771,0.0,0.0,"[0, 0.0]",
+Local no construido para habitación,81,18771,0.43,0.09,"[0.3, 0.61]",21.23
+Vivienda móvil,9,18771,0.05,0.03,"[0.02, 0.12]",57.23
+Refugio,7,18771,0.04,0.03,"[0.01, 0.12]",71.47
+No especificado,3,18771,0.02,0.02,"[0.0, 0.08]",99.86
