@@ -1,0 +1,465 @@
+{
+  "municipio": "San Pedro Mixtepec, Distrito 22, Oaxaca",
+  "clave_geoestadistica": "20318",
+  "encuesta": "EIC 2025",
+  "fuente_zip": "https://www.inegi.org.mx/contenidos/programas/eic/2025/microdatos/eic2025_micro_20_csv.zip",
+  "archivo": "viviendas20.csv",
+  "registros_muestra": 5797,
+  "registros_imputados": 0,
+  "cobertura_codigos": {
+    "2": 5797
+  },
+  "numero_estratos": 3,
+  "numero_upm_estrato": 485,
+  "viviendas_particulares_habitadas": {
+    "estimado": 18771,
+    "error_estandar": 939.22,
+    "ic90_inferior": 17226.12,
+    "ic90_superior": 20315.88,
+    "cv_porcentaje": 5.0
+  },
+  "viviendas_con_caracteristicas": {
+    "estimado": 18674,
+    "error_estandar": 937.88,
+    "ic90_inferior": 17131.32,
+    "ic90_superior": 20216.68,
+    "cv_porcentaje": 5.02
+  },
+  "clases": {
+    "Casa única en el terreno": {
+      "estimado": 11922,
+      "denominador": 18771,
+      "porcentaje": 63.51,
+      "error_estandar_pp": 1.67,
+      "ic90_porcentaje": [
+        60.73,
+        66.21
+      ],
+      "cv_porcentaje": 2.62
+    },
+    "Casa que comparte terreno": {
+      "estimado": 4386,
+      "denominador": 18771,
+      "porcentaje": 23.37,
+      "error_estandar_pp": 1.33,
+      "ic90_porcentaje": [
+        21.25,
+        25.62
+      ],
+      "cv_porcentaje": 5.68
+    },
+    "Casa dúplex": {
+      "estimado": 110,
+      "denominador": 18771,
+      "porcentaje": 0.59,
+      "error_estandar_pp": 0.27,
+      "ic90_porcentaje": [
+        0.28,
+        1.24
+      ],
+      "cv_porcentaje": 45.86
+    },
+    "Departamento en edificio": {
+      "estimado": 157,
+      "denominador": 18771,
+      "porcentaje": 0.84,
+      "error_estandar_pp": 0.32,
+      "ic90_porcentaje": [
+        0.45,
+        1.55
+      ],
+      "cv_porcentaje": 37.72
+    },
+    "Vivienda en vecindad o cuartería": {
+      "estimado": 2096,
+      "denominador": 18771,
+      "porcentaje": 11.17,
+      "error_estandar_pp": 1.28,
+      "ic90_porcentaje": [
+        9.23,
+        13.45
+      ],
+      "cv_porcentaje": 11.44
+    },
+    "Cuarto de azotea": {
+      "estimado": 0,
+      "denominador": 18771,
+      "porcentaje": 0.0,
+      "error_estandar_pp": 0.0,
+      "ic90_porcentaje": [
+        0,
+        0.0
+      ],
+      "cv_porcentaje": null
+    },
+    "Local no construido para habitación": {
+      "estimado": 81,
+      "denominador": 18771,
+      "porcentaje": 0.43,
+      "error_estandar_pp": 0.09,
+      "ic90_porcentaje": [
+        0.3,
+        0.61
+      ],
+      "cv_porcentaje": 21.23
+    },
+    "Vivienda móvil": {
+      "estimado": 9,
+      "denominador": 18771,
+      "porcentaje": 0.05,
+      "error_estandar_pp": 0.03,
+      "ic90_porcentaje": [
+        0.02,
+        0.12
+      ],
+      "cv_porcentaje": 57.23
+    },
+    "Refugio": {
+      "estimado": 7,
+      "denominador": 18771,
+      "porcentaje": 0.04,
+      "error_estandar_pp": 0.03,
+      "ic90_porcentaje": [
+        0.01,
+        0.12
+      ],
+      "cv_porcentaje": 71.47
+    },
+    "No especificado": {
+      "estimado": 3,
+      "denominador": 18771,
+      "porcentaje": 0.02,
+      "error_estandar_pp": 0.02,
+      "ic90_porcentaje": [
+        0.0,
+        0.08
+      ],
+      "cv_porcentaje": 99.86
+    }
+  },
+  "indicadores": {
+    "Paredes de tabique, ladrillo, block, piedra, cantera, cemento o concreto": {
+      "grupo": "materiales",
+      "variable": "PAREDES",
+      "codigo": "8",
+      "estimado": 17419,
+      "denominador": 18674,
+      "porcentaje": 93.28,
+      "error_estandar_pp": 0.46,
+      "ic90_porcentaje": [
+        92.47,
+        94.01
+      ],
+      "cv_porcentaje": 0.5
+    },
+    "Techo de losa de concreto o viguetas con bovedilla": {
+      "grupo": "materiales",
+      "variable": "TECHOS",
+      "codigo": "10",
+      "estimado": 12117,
+      "denominador": 18674,
+      "porcentaje": 64.89,
+      "error_estandar_pp": 1.68,
+      "ic90_porcentaje": [
+        62.07,
+        67.6
+      ],
+      "cv_porcentaje": 2.59
+    },
+    "Techo de lámina metálica": {
+      "grupo": "materiales",
+      "variable": "TECHOS",
+      "codigo": "03",
+      "estimado": 4862,
+      "denominador": 18674,
+      "porcentaje": 26.04,
+      "error_estandar_pp": 1.48,
+      "ic90_porcentaje": [
+        23.67,
+        28.55
+      ],
+      "cv_porcentaje": 5.7
+    },
+    "Piso de cemento o firme": {
+      "grupo": "materiales",
+      "variable": "PISOS",
+      "codigo": "2",
+      "estimado": 12914,
+      "denominador": 18674,
+      "porcentaje": 69.15,
+      "error_estandar_pp": 2.1,
+      "ic90_porcentaje": [
+        65.6,
+        72.5
+      ],
+      "cv_porcentaje": 3.03
+    },
+    "Piso de madera, mosaico u otro recubrimiento": {
+      "grupo": "materiales",
+      "variable": "PISOS",
+      "codigo": "3",
+      "estimado": 5154,
+      "denominador": 18674,
+      "porcentaje": 27.6,
+      "error_estandar_pp": 2.11,
+      "ic90_porcentaje": [
+        24.27,
+        31.19
+      ],
+      "cv_porcentaje": 7.63
+    },
+    "Piso de tierra": {
+      "grupo": "materiales",
+      "variable": "PISOS",
+      "codigo": "1",
+      "estimado": 606,
+      "denominador": 18674,
+      "porcentaje": 3.25,
+      "error_estandar_pp": 0.3,
+      "ic90_porcentaje": [
+        2.79,
+        3.77
+      ],
+      "cv_porcentaje": 9.19
+    },
+    "Vivienda de un cuarto": {
+      "grupo": "espacios",
+      "variable": "TOTCUART",
+      "codigo": "1",
+      "estimado": 4340,
+      "denominador": 18674,
+      "porcentaje": 23.24,
+      "error_estandar_pp": 1.24,
+      "ic90_porcentaje": [
+        21.27,
+        25.34
+      ],
+      "cv_porcentaje": 5.32
+    },
+    "Vivienda de un dormitorio": {
+      "grupo": "espacios",
+      "variable": "CUADORM",
+      "codigo": "1",
+      "estimado": 8349,
+      "denominador": 18674,
+      "porcentaje": 44.71,
+      "error_estandar_pp": 1.13,
+      "ic90_porcentaje": [
+        42.85,
+        46.58
+      ],
+      "cv_porcentaje": 2.53
+    },
+    "Agua entubada dentro de la vivienda": {
+      "grupo": "servicios",
+      "variable": "AGUA_ENTUBADA",
+      "codigo": "1",
+      "estimado": 12289,
+      "denominador": 18674,
+      "porcentaje": 65.81,
+      "error_estandar_pp": 2.24,
+      "ic90_porcentaje": [
+        62.04,
+        69.38
+      ],
+      "cv_porcentaje": 3.4
+    },
+    "Agua entubada solo en patio o terreno": {
+      "grupo": "servicios",
+      "variable": "AGUA_ENTUBADA",
+      "codigo": "2",
+      "estimado": 6022,
+      "denominador": 18674,
+      "porcentaje": 32.25,
+      "error_estandar_pp": 2.22,
+      "ic90_porcentaje": [
+        28.71,
+        36.01
+      ],
+      "cv_porcentaje": 6.89
+    },
+    "Sin agua entubada": {
+      "grupo": "servicios",
+      "variable": "AGUA_ENTUBADA",
+      "codigo": "3",
+      "estimado": 363,
+      "denominador": 18674,
+      "porcentaje": 1.94,
+      "error_estandar_pp": 0.42,
+      "ic90_porcentaje": [
+        1.36,
+        2.77
+      ],
+      "cv_porcentaje": 21.72
+    },
+    "Drenaje conectado a red pública": {
+      "grupo": "servicios",
+      "variable": "DRENAJE",
+      "codigo": "1",
+      "estimado": 5224,
+      "denominador": 18674,
+      "porcentaje": 27.97,
+      "error_estandar_pp": 2.83,
+      "ic90_porcentaje": [
+        23.56,
+        32.86
+      ],
+      "cv_porcentaje": 10.13
+    },
+    "Drenaje conectado a fosa o tanque séptico": {
+      "grupo": "servicios",
+      "variable": "DRENAJE",
+      "codigo": "2",
+      "estimado": 13212,
+      "denominador": 18674,
+      "porcentaje": 70.75,
+      "error_estandar_pp": 2.8,
+      "ic90_porcentaje": [
+        65.94,
+        75.14
+      ],
+      "cv_porcentaje": 3.96
+    },
+    "Sin drenaje": {
+      "grupo": "servicios",
+      "variable": "DRENAJE",
+      "codigo": "5",
+      "estimado": 196,
+      "denominador": 18674,
+      "porcentaje": 1.05,
+      "error_estandar_pp": 0.14,
+      "ic90_porcentaje": [
+        0.84,
+        1.32
+      ],
+      "cv_porcentaje": 13.78
+    },
+    "Con electricidad": {
+      "grupo": "servicios",
+      "variable": "ELECTRICIDAD",
+      "codigo": "1",
+      "estimado": 18534,
+      "denominador": 18674,
+      "porcentaje": 99.25,
+      "error_estandar_pp": 0.14,
+      "ic90_porcentaje": [
+        98.98,
+        99.45
+      ],
+      "cv_porcentaje": 0.14
+    },
+    "Con internet": {
+      "grupo": "equipamiento",
+      "variable": "INTERNET",
+      "codigo": "7",
+      "estimado": 12064,
+      "denominador": 18674,
+      "porcentaje": 64.6,
+      "error_estandar_pp": 1.23,
+      "ic90_porcentaje": [
+        62.56,
+        66.59
+      ],
+      "cv_porcentaje": 1.9
+    },
+    "Con refrigerador": {
+      "grupo": "equipamiento",
+      "variable": "REFRIGERADOR",
+      "codigo": "1",
+      "estimado": 16494,
+      "denominador": 18674,
+      "porcentaje": 88.33,
+      "error_estandar_pp": 0.68,
+      "ic90_porcentaje": [
+        87.16,
+        89.4
+      ],
+      "cv_porcentaje": 0.77
+    },
+    "Con lavadora": {
+      "grupo": "equipamiento",
+      "variable": "LAVADORA",
+      "codigo": "3",
+      "estimado": 13014,
+      "denominador": 18674,
+      "porcentaje": 69.69,
+      "error_estandar_pp": 1.0,
+      "ic90_porcentaje": [
+        68.02,
+        71.31
+      ],
+      "cv_porcentaje": 1.43
+    },
+    "Con aire acondicionado": {
+      "grupo": "equipamiento",
+      "variable": "AIRE_ACON",
+      "codigo": "5",
+      "estimado": 3190,
+      "denominador": 18674,
+      "porcentaje": 17.08,
+      "error_estandar_pp": 1.35,
+      "ic90_porcentaje": [
+        14.97,
+        19.43
+      ],
+      "cv_porcentaje": 7.93
+    },
+    "Habita la persona propietaria": {
+      "grupo": "tenencia",
+      "variable": "TENENCIA",
+      "codigo": "1",
+      "estimado": 11147,
+      "denominador": 18674,
+      "porcentaje": 59.69,
+      "error_estandar_pp": 1.25,
+      "ic90_porcentaje": [
+        57.62,
+        61.73
+      ],
+      "cv_porcentaje": 2.09
+    },
+    "Propiedad aún en pago": {
+      "grupo": "tenencia",
+      "variable": "TENENCIA",
+      "codigo": "2",
+      "estimado": 95,
+      "denominador": 18674,
+      "porcentaje": 0.51,
+      "error_estandar_pp": 0.13,
+      "ic90_porcentaje": [
+        0.33,
+        0.79
+      ],
+      "cv_porcentaje": 26.5
+    },
+    "Se paga renta": {
+      "grupo": "tenencia",
+      "variable": "TENENCIA",
+      "codigo": "3",
+      "estimado": 5291,
+      "denominador": 18674,
+      "porcentaje": 28.33,
+      "error_estandar_pp": 1.29,
+      "ic90_porcentaje": [
+        26.27,
+        30.5
+      ],
+      "cv_porcentaje": 4.54
+    },
+    "Prestada o de familiar": {
+      "grupo": "tenencia",
+      "variable": "TENENCIA",
+      "codigo": "4",
+      "estimado": 2037,
+      "denominador": 18674,
+      "porcentaje": 10.91,
+      "error_estandar_pp": 0.53,
+      "ic90_porcentaje": [
+        10.06,
+        11.82
+      ],
+      "cv_porcentaje": 4.9
+    }
+  },
+  "nota": "Porcentajes de clases sobre todas las viviendas particulares habitadas; otras características sobre las viviendas a las que se captan características detalladas (VIVPARHAB_C). Intervalos al 90%, Taylor estrato-UPM; aproximación reproducible, no publicación oficial de precisión por indicador."
+}
