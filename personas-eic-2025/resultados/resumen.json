@@ -1,0 +1,1325 @@
+{
+  "municipio": "San Pedro Mixtepec, Distrito 22, Oaxaca",
+  "clave": "20318",
+  "registros_personas": 17936,
+  "viviendas_muestra": 5797,
+  "estratos": 3,
+  "upm_en_estrato": 485,
+  "indicadores": {
+    "poblacion": {
+      "estimado": 57844,
+      "muestra": 17936,
+      "precision": "aproximada_no_oficial",
+      "error_estandar": 2957.35,
+      "ic90": [
+        52979.16,
+        62708.84
+      ],
+      "cv": 5.11
+    },
+    "mujeres": {
+      "estimado": 30346,
+      "muestra": 9415,
+      "precision": "aproximada_no_oficial",
+      "error_estandar": 1561.27,
+      "ic90": [
+        27777.72,
+        32914.28
+      ],
+      "cv": 5.14
+    },
+    "hombres": {
+      "estimado": 27498,
+      "muestra": 8521,
+      "precision": "aproximada_no_oficial",
+      "error_estandar": 1419.66,
+      "ic90": [
+        25162.66,
+        29833.34
+      ],
+      "cv": 5.16
+    },
+    "proporcion_mujeres": {
+      "estimado": 30346,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 9415,
+      "muestra_dominio": 17936,
+      "porcentaje": 52.46,
+      "error_estandar_pp": 0.32,
+      "ic90": [
+        51.93,
+        52.99
+      ],
+      "cv": 0.62
+    },
+    "imputados": {
+      "estimado": 452,
+      "muestra": 142,
+      "precision": "aproximada_no_oficial",
+      "error_estandar": 50.37,
+      "ic90": [
+        369.15,
+        534.85
+      ],
+      "cv": 11.14
+    },
+    "edad_0-14": {
+      "estimado": 13267,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 4124,
+      "muestra_dominio": 17936,
+      "porcentaje": 22.94,
+      "error_estandar_pp": 0.38,
+      "ic90": [
+        22.31,
+        23.57
+      ],
+      "cv": 1.67
+    },
+    "edad_15-29": {
+      "estimado": 14380,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 4420,
+      "muestra_dominio": 17936,
+      "porcentaje": 24.86,
+      "error_estandar_pp": 0.42,
+      "ic90": [
+        24.17,
+        25.56
+      ],
+      "cv": 1.7
+    },
+    "edad_30-44": {
+      "estimado": 13795,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 4271,
+      "muestra_dominio": 17936,
+      "porcentaje": 23.85,
+      "error_estandar_pp": 0.35,
+      "ic90": [
+        23.27,
+        24.43
+      ],
+      "cv": 1.47
+    },
+    "edad_45-64": {
+      "estimado": 12037,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 3730,
+      "muestra_dominio": 17936,
+      "porcentaje": 20.81,
+      "error_estandar_pp": 0.36,
+      "ic90": [
+        20.22,
+        21.41
+      ],
+      "cv": 1.75
+    },
+    "edad_65+": {
+      "estimado": 4365,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1391,
+      "muestra_dominio": 17936,
+      "porcentaje": 7.55,
+      "error_estandar_pp": 0.27,
+      "ic90": [
+        7.11,
+        8.01
+      ],
+      "cv": 3.61
+    },
+    "edad_0-4": {
+      "estimado": 3790,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1179,
+      "muestra_dominio": 17936,
+      "porcentaje": 6.55,
+      "error_estandar_pp": 0.2,
+      "ic90": [
+        6.23,
+        6.89
+      ],
+      "cv": 3.03
+    },
+    "edad_5-9": {
+      "estimado": 4571,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1420,
+      "muestra_dominio": 17936,
+      "porcentaje": 7.9,
+      "error_estandar_pp": 0.23,
+      "ic90": [
+        7.53,
+        8.29
+      ],
+      "cv": 2.92
+    },
+    "edad_10-14": {
+      "estimado": 4906,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1525,
+      "muestra_dominio": 17936,
+      "porcentaje": 8.48,
+      "error_estandar_pp": 0.21,
+      "ic90": [
+        8.14,
+        8.84
+      ],
+      "cv": 2.5
+    },
+    "edad_15-19": {
+      "estimado": 5304,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1632,
+      "muestra_dominio": 17936,
+      "porcentaje": 9.17,
+      "error_estandar_pp": 0.24,
+      "ic90": [
+        8.78,
+        9.57
+      ],
+      "cv": 2.61
+    },
+    "edad_20-24": {
+      "estimado": 4435,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1363,
+      "muestra_dominio": 17936,
+      "porcentaje": 7.67,
+      "error_estandar_pp": 0.25,
+      "ic90": [
+        7.26,
+        8.1
+      ],
+      "cv": 3.32
+    },
+    "edad_25-29": {
+      "estimado": 4641,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1425,
+      "muestra_dominio": 17936,
+      "porcentaje": 8.02,
+      "error_estandar_pp": 0.22,
+      "ic90": [
+        7.67,
+        8.39
+      ],
+      "cv": 2.7
+    },
+    "edad_30-34": {
+      "estimado": 4960,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1535,
+      "muestra_dominio": 17936,
+      "porcentaje": 8.57,
+      "error_estandar_pp": 0.24,
+      "ic90": [
+        8.19,
+        8.97
+      ],
+      "cv": 2.76
+    },
+    "edad_35-39": {
+      "estimado": 4763,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1475,
+      "muestra_dominio": 17936,
+      "porcentaje": 8.23,
+      "error_estandar_pp": 0.24,
+      "ic90": [
+        7.84,
+        8.64
+      ],
+      "cv": 2.94
+    },
+    "edad_40-44": {
+      "estimado": 4072,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1261,
+      "muestra_dominio": 17936,
+      "porcentaje": 7.04,
+      "error_estandar_pp": 0.2,
+      "ic90": [
+        6.72,
+        7.38
+      ],
+      "cv": 2.83
+    },
+    "edad_45-49": {
+      "estimado": 3761,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1152,
+      "muestra_dominio": 17936,
+      "porcentaje": 6.5,
+      "error_estandar_pp": 0.19,
+      "ic90": [
+        6.19,
+        6.83
+      ],
+      "cv": 2.99
+    },
+    "edad_50-54": {
+      "estimado": 3344,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1034,
+      "muestra_dominio": 17936,
+      "porcentaje": 5.78,
+      "error_estandar_pp": 0.19,
+      "ic90": [
+        5.47,
+        6.1
+      ],
+      "cv": 3.3
+    },
+    "edad_55-59": {
+      "estimado": 2696,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 840,
+      "muestra_dominio": 17936,
+      "porcentaje": 4.66,
+      "error_estandar_pp": 0.16,
+      "ic90": [
+        4.4,
+        4.94
+      ],
+      "cv": 3.53
+    },
+    "edad_60-64": {
+      "estimado": 2236,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 704,
+      "muestra_dominio": 17936,
+      "porcentaje": 3.87,
+      "error_estandar_pp": 0.17,
+      "ic90": [
+        3.59,
+        4.16
+      ],
+      "cv": 4.4
+    },
+    "edad_65-69": {
+      "estimado": 1558,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 499,
+      "muestra_dominio": 17936,
+      "porcentaje": 2.69,
+      "error_estandar_pp": 0.13,
+      "ic90": [
+        2.48,
+        2.92
+      ],
+      "cv": 4.94
+    },
+    "edad_70-74": {
+      "estimado": 1144,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 367,
+      "muestra_dominio": 17936,
+      "porcentaje": 1.98,
+      "error_estandar_pp": 0.12,
+      "ic90": [
+        1.79,
+        2.18
+      ],
+      "cv": 5.97
+    },
+    "edad_75+": {
+      "estimado": 1663,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 525,
+      "muestra_dominio": 17936,
+      "porcentaje": 2.87,
+      "error_estandar_pp": 0.15,
+      "ic90": [
+        2.64,
+        3.13
+      ],
+      "cv": 5.18
+    },
+    "edad_mediana_ponderada_sin_interpolacion": 30.0,
+    "localidad_menos_2500": {
+      "estimado": 10440,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 3219,
+      "muestra_dominio": 17936,
+      "porcentaje": 18.05,
+      "error_estandar_pp": 2.12,
+      "ic90": [
+        14.82,
+        21.8
+      ],
+      "cv": 11.73
+    },
+    "localidad_2500_14999": {
+      "estimado": 12696,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 4817,
+      "muestra_dominio": 17936,
+      "porcentaje": 21.95,
+      "error_estandar_pp": 1.97,
+      "ic90": [
+        18.87,
+        25.37
+      ],
+      "cv": 8.97
+    },
+    "localidad_15000_49999": {
+      "estimado": 34708,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 9900,
+      "muestra_dominio": 17936,
+      "porcentaje": 60.0,
+      "error_estandar_pp": 2.5,
+      "ic90": [
+        55.82,
+        64.04
+      ],
+      "cv": 4.17
+    },
+    "localidad_50000_99999": {
+      "estimado": 0,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 0,
+      "muestra_dominio": 17936,
+      "porcentaje": 0.0,
+      "error_estandar_pp": 0.0,
+      "ic90": [
+        0.0,
+        0.0
+      ],
+      "cv": null
+    },
+    "localidad_100000_mas": {
+      "estimado": 0,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 0,
+      "muestra_dominio": 17936,
+      "porcentaje": 0.0,
+      "error_estandar_pp": 0.0,
+      "ic90": [
+        0.0,
+        0.0
+      ],
+      "cv": null
+    },
+    "nacido_oaxaca": {
+      "estimado": 51459,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 16052,
+      "muestra_dominio": 17936,
+      "porcentaje": 88.96,
+      "error_estandar_pp": 0.62,
+      "ic90": [
+        87.9,
+        89.94
+      ],
+      "cv": 0.69
+    },
+    "nacido_otra_entidad": {
+      "estimado": 5631,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1662,
+      "muestra_dominio": 17936,
+      "porcentaje": 9.73,
+      "error_estandar_pp": 0.55,
+      "ic90": [
+        8.87,
+        10.68
+      ],
+      "cv": 5.64
+    },
+    "nacido_otro_pais": {
+      "estimado": 735,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 217,
+      "muestra_dominio": 17936,
+      "porcentaje": 1.27,
+      "error_estandar_pp": 0.14,
+      "ic90": [
+        1.06,
+        1.53
+      ],
+      "cv": 11.17
+    },
+    "mismo_municipio_2020": {
+      "estimado": 48164,
+      "denominador": 54054,
+      "precision": "aproximada_no_oficial",
+      "muestra": 14969,
+      "muestra_dominio": 16757,
+      "porcentaje": 89.1,
+      "error_estandar_pp": 0.6,
+      "ic90": [
+        88.07,
+        90.06
+      ],
+      "cv": 0.68
+    },
+    "otra_entidad_2020": {
+      "estimado": 2086,
+      "denominador": 54054,
+      "precision": "aproximada_no_oficial",
+      "muestra": 626,
+      "muestra_dominio": 16757,
+      "porcentaje": 3.86,
+      "error_estandar_pp": 0.33,
+      "ic90": [
+        3.36,
+        4.43
+      ],
+      "cv": 8.43
+    },
+    "otro_pais_2020": {
+      "estimado": 470,
+      "denominador": 54054,
+      "precision": "aproximada_no_oficial",
+      "muestra": 140,
+      "muestra_dominio": 16757,
+      "porcentaje": 0.87,
+      "error_estandar_pp": 0.12,
+      "ic90": [
+        0.69,
+        1.09
+      ],
+      "cv": 13.66
+    },
+    "indigena_autoadscripcion": {
+      "estimado": 23777,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 7423,
+      "muestra_dominio": 17936,
+      "porcentaje": 41.11,
+      "error_estandar_pp": 1.58,
+      "ic90": [
+        38.52,
+        43.74
+      ],
+      "cv": 3.86
+    },
+    "afro_autoadscripcion": {
+      "estimado": 4734,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1428,
+      "muestra_dominio": 17936,
+      "porcentaje": 8.18,
+      "error_estandar_pp": 0.59,
+      "ic90": [
+        7.26,
+        9.21
+      ],
+      "cv": 7.22
+    },
+    "habla_lengua_indigena_3mas": {
+      "estimado": 2277,
+      "denominador": 55647,
+      "precision": "aproximada_no_oficial",
+      "muestra": 691,
+      "muestra_dominio": 17250,
+      "porcentaje": 4.09,
+      "error_estandar_pp": 0.27,
+      "ic90": [
+        3.67,
+        4.56
+      ],
+      "cv": 6.64
+    },
+    "habla_espanol_entre_hli": {
+      "estimado": 2262,
+      "denominador": 2277,
+      "precision": "aproximada_no_oficial",
+      "muestra": 687,
+      "muestra_dominio": 691,
+      "porcentaje": 99.34,
+      "error_estandar_pp": 0.33,
+      "ic90": [
+        98.51,
+        99.71
+      ],
+      "cv": 0.33
+    },
+    "discapacidad": {
+      "estimado": 2966,
+      "muestra": 952,
+      "precision": "aproximada_no_oficial",
+      "error_estandar": 202.57,
+      "ic90": [
+        2632.78,
+        3299.22
+      ],
+      "cv": 6.83
+    },
+    "discapacidad_pct": {
+      "estimado": 2966,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 952,
+      "muestra_dominio": 17936,
+      "porcentaje": 5.13,
+      "error_estandar_pp": 0.25,
+      "ic90": [
+        4.73,
+        5.56
+      ],
+      "cv": 4.94
+    },
+    "condicion_mental": {
+      "estimado": 663,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 210,
+      "muestra_dominio": 17936,
+      "porcentaje": 1.15,
+      "error_estandar_pp": 0.09,
+      "ic90": [
+        1.0,
+        1.31
+      ],
+      "cv": 8.04
+    },
+    "discapacidad_60mas": {
+      "estimado": 1672,
+      "denominador": 6601,
+      "precision": "aproximada_no_oficial",
+      "muestra": 537,
+      "muestra_dominio": 2095,
+      "porcentaje": 25.33,
+      "error_estandar_pp": 1.39,
+      "ic90": [
+        23.11,
+        27.69
+      ],
+      "cv": 5.48
+    },
+    "asiste_6_14": {
+      "estimado": 8163,
+      "denominador": 8609,
+      "precision": "aproximada_no_oficial",
+      "muestra": 2530,
+      "muestra_dominio": 2673,
+      "porcentaje": 94.82,
+      "error_estandar_pp": 0.48,
+      "ic90": [
+        93.97,
+        95.55
+      ],
+      "cv": 0.51
+    },
+    "no_asiste_6_14": {
+      "estimado": 423,
+      "denominador": 8609,
+      "precision": "aproximada_no_oficial",
+      "muestra": 136,
+      "muestra_dominio": 2673,
+      "porcentaje": 4.91,
+      "error_estandar_pp": 0.47,
+      "ic90": [
+        4.2,
+        5.75
+      ],
+      "cv": 9.56
+    },
+    "asiste_15_17": {
+      "estimado": 2178,
+      "denominador": 3236,
+      "precision": "aproximada_no_oficial",
+      "muestra": 668,
+      "muestra_dominio": 998,
+      "porcentaje": 67.31,
+      "error_estandar_pp": 1.85,
+      "ic90": [
+        64.18,
+        70.28
+      ],
+      "cv": 2.75
+    },
+    "asiste_18_24": {
+      "estimado": 1632,
+      "denominador": 6503,
+      "precision": "aproximada_no_oficial",
+      "muestra": 491,
+      "muestra_dominio": 1997,
+      "porcentaje": 25.1,
+      "error_estandar_pp": 1.45,
+      "ic90": [
+        22.78,
+        27.57
+      ],
+      "cv": 5.79
+    },
+    "analfabetismo_15mas": {
+      "estimado": 2734,
+      "denominador": 44577,
+      "precision": "aproximada_no_oficial",
+      "muestra": 889,
+      "muestra_dominio": 13812,
+      "porcentaje": 6.13,
+      "error_estandar_pp": 0.33,
+      "ic90": [
+        5.61,
+        6.7
+      ],
+      "cv": 5.4
+    },
+    "analfabetismo_mujeres_15mas": {
+      "estimado": 1664,
+      "denominador": 23761,
+      "precision": "aproximada_no_oficial",
+      "muestra": 539,
+      "muestra_dominio": 7362,
+      "porcentaje": 7.0,
+      "error_estandar_pp": 0.38,
+      "ic90": [
+        6.4,
+        7.65
+      ],
+      "cv": 5.41
+    },
+    "analfabetismo_hombres_15mas": {
+      "estimado": 1070,
+      "denominador": 20816,
+      "precision": "aproximada_no_oficial",
+      "muestra": 350,
+      "muestra_dominio": 6450,
+      "porcentaje": 5.14,
+      "error_estandar_pp": 0.39,
+      "ic90": [
+        4.54,
+        5.82
+      ],
+      "cv": 7.51
+    },
+    "escolaridad_sin_escolaridad_15mas": {
+      "estimado": 2954,
+      "denominador": 44577,
+      "precision": "aproximada_no_oficial",
+      "muestra": 951,
+      "muestra_dominio": 13812,
+      "porcentaje": 6.63,
+      "error_estandar_pp": 0.34,
+      "ic90": [
+        6.09,
+        7.2
+      ],
+      "cv": 5.08
+    },
+    "escolaridad_basica_15mas": {
+      "estimado": 21212,
+      "denominador": 44577,
+      "precision": "aproximada_no_oficial",
+      "muestra": 6666,
+      "muestra_dominio": 13812,
+      "porcentaje": 47.59,
+      "error_estandar_pp": 1.12,
+      "ic90": [
+        45.74,
+        49.44
+      ],
+      "cv": 2.36
+    },
+    "escolaridad_media_superior_15mas": {
+      "estimado": 11196,
+      "denominador": 44577,
+      "precision": "aproximada_no_oficial",
+      "muestra": 3435,
+      "muestra_dominio": 13812,
+      "porcentaje": 25.12,
+      "error_estandar_pp": 0.47,
+      "ic90": [
+        24.34,
+        25.91
+      ],
+      "cv": 1.89
+    },
+    "escolaridad_superior_15mas": {
+      "estimado": 8614,
+      "denominador": 44577,
+      "precision": "aproximada_no_oficial",
+      "muestra": 2583,
+      "muestra_dominio": 13812,
+      "porcentaje": 19.32,
+      "error_estandar_pp": 1.02,
+      "ic90": [
+        17.7,
+        21.06
+      ],
+      "cv": 5.28
+    },
+    "escolaridad_posgrado_15mas": {
+      "estimado": 590,
+      "denominador": 44577,
+      "precision": "aproximada_no_oficial",
+      "muestra": 174,
+      "muestra_dominio": 13812,
+      "porcentaje": 1.32,
+      "error_estandar_pp": 0.19,
+      "ic90": [
+        1.04,
+        1.68
+      ],
+      "cv": 14.4
+    },
+    "afiliacion_salud": {
+      "estimado": 27393,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 8408,
+      "muestra_dominio": 17936,
+      "porcentaje": 47.36,
+      "error_estandar_pp": 1.97,
+      "ic90": [
+        44.13,
+        50.6
+      ],
+      "cv": 4.15
+    },
+    "sin_afiliacion_salud": {
+      "estimado": 30402,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 9514,
+      "muestra_dominio": 17936,
+      "porcentaje": 52.56,
+      "error_estandar_pp": 1.97,
+      "ic90": [
+        49.31,
+        55.79
+      ],
+      "cv": 3.74
+    },
+    "atiende_privado": {
+      "estimado": 21348,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 6549,
+      "muestra_dominio": 17936,
+      "porcentaje": 36.91,
+      "error_estandar_pp": 0.99,
+      "ic90": [
+        35.28,
+        38.56
+      ],
+      "cv": 2.69
+    },
+    "atiende_consultorio_farmacia": {
+      "estimado": 5154,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1516,
+      "muestra_dominio": 17936,
+      "porcentaje": 8.91,
+      "error_estandar_pp": 0.66,
+      "ic90": [
+        7.89,
+        10.05
+      ],
+      "cv": 7.35
+    },
+    "atiende_centro_publico": {
+      "estimado": 18318,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 5942,
+      "muestra_dominio": 17936,
+      "porcentaje": 31.67,
+      "error_estandar_pp": 1.33,
+      "ic90": [
+        29.52,
+        33.9
+      ],
+      "cv": 4.2
+    },
+    "no_se_atiende": {
+      "estimado": 1333,
+      "denominador": 57844,
+      "precision": "aproximada_no_oficial",
+      "muestra": 421,
+      "muestra_dominio": 17936,
+      "porcentaje": 2.3,
+      "error_estandar_pp": 0.25,
+      "ic90": [
+        1.93,
+        2.75
+      ],
+      "cv": 10.76
+    },
+    "pea_12mas": {
+      "estimado": 30807,
+      "denominador": 47586,
+      "precision": "aproximada_no_oficial",
+      "muestra": 9527,
+      "muestra_dominio": 14746,
+      "porcentaje": 64.74,
+      "error_estandar_pp": 0.64,
+      "ic90": [
+        63.68,
+        65.79
+      ],
+      "cv": 0.99
+    },
+    "pea_mujeres_12mas": {
+      "estimado": 13450,
+      "denominador": 25253,
+      "precision": "aproximada_no_oficial",
+      "muestra": 4140,
+      "muestra_dominio": 7829,
+      "porcentaje": 53.26,
+      "error_estandar_pp": 0.97,
+      "ic90": [
+        51.66,
+        54.86
+      ],
+      "cv": 1.82
+    },
+    "pea_hombres_12mas": {
+      "estimado": 17357,
+      "denominador": 22333,
+      "precision": "aproximada_no_oficial",
+      "muestra": 5387,
+      "muestra_dominio": 6917,
+      "porcentaje": 77.72,
+      "error_estandar_pp": 0.56,
+      "ic90": [
+        76.77,
+        78.64
+      ],
+      "cv": 0.73
+    },
+    "ocupados": {
+      "estimado": 30544,
+      "muestra": 9446,
+      "precision": "aproximada_no_oficial",
+      "error_estandar": 1527.04,
+      "ic90": [
+        28032.01,
+        33055.99
+      ],
+      "cv": 5.0
+    },
+    "ocupados_entre_pea": {
+      "estimado": 30544,
+      "denominador": 30807,
+      "precision": "aproximada_no_oficial",
+      "muestra": 9446,
+      "muestra_dominio": 9527,
+      "porcentaje": 99.15,
+      "error_estandar_pp": 0.11,
+      "ic90": [
+        98.95,
+        99.31
+      ],
+      "cv": 0.11
+    },
+    "desocupados_entre_pea": {
+      "estimado": 263,
+      "denominador": 30807,
+      "precision": "aproximada_no_oficial",
+      "muestra": 81,
+      "muestra_dominio": 9527,
+      "porcentaje": 0.85,
+      "error_estandar_pp": 0.11,
+      "ic90": [
+        0.69,
+        1.05
+      ],
+      "cv": 12.54
+    },
+    "sector_comercio_minorista": {
+      "estimado": 5657,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1711,
+      "muestra_dominio": 9446,
+      "porcentaje": 18.52,
+      "error_estandar_pp": 0.62,
+      "ic90": [
+        17.52,
+        19.57
+      ],
+      "cv": 3.35
+    },
+    "sector_alojamiento_alimentos": {
+      "estimado": 5010,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1537,
+      "muestra_dominio": 9446,
+      "porcentaje": 16.4,
+      "error_estandar_pp": 0.53,
+      "ic90": [
+        15.55,
+        17.3
+      ],
+      "cv": 3.23
+    },
+    "sector_construccion": {
+      "estimado": 3645,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1164,
+      "muestra_dominio": 9446,
+      "porcentaje": 11.93,
+      "error_estandar_pp": 0.5,
+      "ic90": [
+        11.14,
+        12.77
+      ],
+      "cv": 4.15
+    },
+    "sector_otros_servicios": {
+      "estimado": 2965,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 923,
+      "muestra_dominio": 9446,
+      "porcentaje": 9.71,
+      "error_estandar_pp": 0.38,
+      "ic90": [
+        9.09,
+        10.36
+      ],
+      "cv": 3.96
+    },
+    "sector_agropecuario_pesca": {
+      "estimado": 2282,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 753,
+      "muestra_dominio": 9446,
+      "porcentaje": 7.47,
+      "error_estandar_pp": 0.8,
+      "ic90": [
+        6.25,
+        8.9
+      ],
+      "cv": 10.72
+    },
+    "sector_educacion": {
+      "estimado": 1998,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 604,
+      "muestra_dominio": 9446,
+      "porcentaje": 6.54,
+      "error_estandar_pp": 0.42,
+      "ic90": [
+        5.89,
+        7.26
+      ],
+      "cv": 6.35
+    },
+    "posicion_asalariados": {
+      "estimado": 18999,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 5849,
+      "muestra_dominio": 9446,
+      "porcentaje": 62.2,
+      "error_estandar_pp": 0.92,
+      "ic90": [
+        60.68,
+        63.7
+      ],
+      "cv": 1.47
+    },
+    "posicion_empleadores": {
+      "estimado": 944,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 292,
+      "muestra_dominio": 9446,
+      "porcentaje": 3.09,
+      "error_estandar_pp": 0.28,
+      "ic90": [
+        2.66,
+        3.59
+      ],
+      "cv": 9.1
+    },
+    "posicion_cuenta_propia": {
+      "estimado": 9912,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 3092,
+      "muestra_dominio": 9446,
+      "porcentaje": 32.45,
+      "error_estandar_pp": 0.93,
+      "ic90": [
+        30.94,
+        34.0
+      ],
+      "cv": 2.86
+    },
+    "posicion_sin_pago": {
+      "estimado": 689,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 213,
+      "muestra_dominio": 9446,
+      "porcentaje": 2.26,
+      "error_estandar_pp": 0.19,
+      "ic90": [
+        1.96,
+        2.6
+      ],
+      "cv": 8.63
+    },
+    "aguinaldo_entre_asalariados": {
+      "estimado": 8495,
+      "denominador": 18999,
+      "precision": "aproximada_no_oficial",
+      "muestra": 2568,
+      "muestra_dominio": 5849,
+      "porcentaje": 44.71,
+      "error_estandar_pp": 1.23,
+      "ic90": [
+        42.7,
+        46.74
+      ],
+      "cv": 2.74
+    },
+    "servicio_medico_laboral_entre_asalariados": {
+      "estimado": 5450,
+      "denominador": 18999,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1638,
+      "muestra_dominio": 5849,
+      "porcentaje": 28.69,
+      "error_estandar_pp": 1.15,
+      "ic90": [
+        26.83,
+        30.62
+      ],
+      "cv": 4.0
+    },
+    "vacaciones_entre_asalariados": {
+      "estimado": 6599,
+      "denominador": 18999,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1983,
+      "muestra_dominio": 5849,
+      "porcentaje": 34.73,
+      "error_estandar_pp": 1.22,
+      "ic90": [
+        32.75,
+        36.77
+      ],
+      "cv": 3.51
+    },
+    "ingreso_reportado_ocupados": {
+      "estimado": 30461,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 9421,
+      "muestra_dominio": 9446,
+      "porcentaje": 99.73,
+      "error_estandar_pp": 0.08,
+      "ic90": [
+        99.55,
+        99.83
+      ],
+      "cv": 0.08
+    },
+    "ingreso_cero_ocupados_con_dato": {
+      "estimado": 1164,
+      "denominador": 30461,
+      "precision": "aproximada_no_oficial",
+      "muestra": 364,
+      "muestra_dominio": 9421,
+      "porcentaje": 3.82,
+      "error_estandar_pp": 0.35,
+      "ic90": [
+        3.28,
+        4.44
+      ],
+      "cv": 9.19
+    },
+    "ingreso_mensual_total": {
+      "universo_estimado": 30461,
+      "muestra": 9421,
+      "mediana": 10750,
+      "q1": 7000,
+      "q3": 15050
+    },
+    "ingreso_mensual_mujeres": {
+      "universo_estimado": 13368,
+      "muestra": 4115,
+      "mediana": 8600,
+      "q1": 6000,
+      "q3": 12900
+    },
+    "ingreso_mensual_hombres": {
+      "universo_estimado": 17093,
+      "muestra": 5306,
+      "mediana": 12900,
+      "q1": 8600,
+      "q3": 17200
+    },
+    "horas_semanales_mediana": {
+      "mediana": 48.0,
+      "universo_estimado": 30500
+    },
+    "trabaja_mismo_municipio": {
+      "estimado": 28385,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 8795,
+      "muestra_dominio": 9446,
+      "porcentaje": 92.93,
+      "error_estandar_pp": 0.43,
+      "ic90": [
+        92.19,
+        93.61
+      ],
+      "cv": 0.46
+    },
+    "traslado_trabajo_30min_o_menos": {
+      "estimado": 20199,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 6212,
+      "muestra_dominio": 9446,
+      "porcentaje": 66.13,
+      "error_estandar_pp": 0.89,
+      "ic90": [
+        64.65,
+        67.58
+      ],
+      "cv": 1.35
+    },
+    "traslado_trabajo_no_se_traslada": {
+      "estimado": 4752,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1474,
+      "muestra_dominio": 9446,
+      "porcentaje": 15.56,
+      "error_estandar_pp": 0.56,
+      "ic90": [
+        14.65,
+        16.51
+      ],
+      "cv": 3.61
+    },
+    "traslado_trabajo_caminar": {
+      "estimado": 6890,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 2122,
+      "muestra_dominio": 9446,
+      "porcentaje": 22.56,
+      "error_estandar_pp": 1.01,
+      "ic90": [
+        20.94,
+        24.27
+      ],
+      "cv": 4.48
+    },
+    "traslado_trabajo_motocicleta": {
+      "estimado": 7159,
+      "denominador": 30544,
+      "precision": "aproximada_no_oficial",
+      "muestra": 2207,
+      "muestra_dominio": 9446,
+      "porcentaje": 23.44,
+      "error_estandar_pp": 0.66,
+      "ic90": [
+        22.36,
+        24.55
+      ],
+      "cv": 2.83
+    },
+    "conyugal_soltera_12mas": {
+      "estimado": 17272,
+      "denominador": 47586,
+      "precision": "aproximada_no_oficial",
+      "muestra": 5301,
+      "muestra_dominio": 14746,
+      "porcentaje": 36.3,
+      "error_estandar_pp": 0.51,
+      "ic90": [
+        35.46,
+        37.15
+      ],
+      "cv": 1.41
+    },
+    "conyugal_union_o_casada_12mas": {
+      "estimado": 24355,
+      "denominador": 47586,
+      "precision": "aproximada_no_oficial",
+      "muestra": 7580,
+      "muestra_dominio": 14746,
+      "porcentaje": 51.18,
+      "error_estandar_pp": 0.59,
+      "ic90": [
+        50.21,
+        52.16
+      ],
+      "cv": 1.16
+    },
+    "conyugal_separada_divorciada_viuda_12mas": {
+      "estimado": 5955,
+      "denominador": 47586,
+      "precision": "aproximada_no_oficial",
+      "muestra": 1864,
+      "muestra_dominio": 14746,
+      "porcentaje": 12.51,
+      "error_estandar_pp": 0.37,
+      "ic90": [
+        11.91,
+        13.14
+      ],
+      "cv": 2.99
+    },
+    "hijos_nacidos_vivos_15_49": {
+      "mujeres_estimadas_con_dato": 16994,
+      "muestra": 5236,
+      "promedio": 1.3
+    },
+    "sin_hijos_nacidos_vivos_15_49": {
+      "estimado": 6744,
+      "denominador": 16994,
+      "precision": "aproximada_no_oficial",
+      "muestra": 2051,
+      "muestra_dominio": 5236,
+      "porcentaje": 39.68,
+      "error_estandar_pp": 0.87,
+      "ic90": [
+        38.26,
+        41.13
+      ],
+      "cv": 2.19
+    }
+  }
+}

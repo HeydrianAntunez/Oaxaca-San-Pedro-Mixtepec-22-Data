@@ -1,0 +1,64 @@
+{
+  "registros": 17936,
+  "poblacion": 57844,
+  "menores_15": [
+    13267,
+    22.94
+  ],
+  "65_mas": [
+    4365,
+    7.55
+  ],
+  "indigena": [
+    23777,
+    41.11
+  ],
+  "habla_lengua_3mas": [
+    2277,
+    4.09
+  ],
+  "sin_afiliacion": [
+    30402,
+    52.56
+  ],
+  "atencion_privada_todos": [
+    21348,
+    36.91
+  ],
+  "atencion_privada_usuarios": [
+    21348,
+    37.82
+  ],
+  "participacion_mujeres_12mas": [
+    13450,
+    53.26
+  ],
+  "participacion_hombres_12mas": [
+    17357,
+    77.72
+  ],
+  "asalariados": 18999,
+  "servicio_medico_laboral": [
+    5450,
+    28.69
+  ],
+  "ocupados": 30544,
+  "sectores": {
+    "46": [
+      5657,
+      18.52
+    ],
+    "72": [
+      5010,
+      16.4
+    ],
+    "23": [
+      3645,
+      11.93
+    ]
+  },
+  "tres_sectores": [
+    14312,
+    46.86
+  ]
+}
