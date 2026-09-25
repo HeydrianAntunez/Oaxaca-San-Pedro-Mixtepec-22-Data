@@ -1,7 +1,7 @@
-"""Crea cinco infografías PNG de las conclusiones verificadas de la EIC 2025.
+"""Cinco infografías ilustradas, reproducibles desde la auditoría EIC 2025.
 
-Uso: python crear_infografias.py
-Fuente numérica: resultados/auditoria.json, generado por validar_conclusiones.py.
+Ejecute: python crear_infografias.py
+Las figuras son decorativas; cada porcentaje declara su universo estadístico.
 """
 from __future__ import annotations
 
@@ -9,178 +9,271 @@ import json
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
-ROOT = Path(__file__).resolve().parent
-DEST = ROOT / "infografias"
-DEST.mkdir(exist_ok=True)
-AUDIT = json.loads((ROOT / "resultados/auditoria.json").read_text(encoding="utf-8"))
-SUMMARY = json.loads((ROOT / "resultados/resumen.json").read_text(encoding="utf-8"))["indicadores"]
-W, H = 1080, 1350
-NAVY = "#1D394D"
-TEAL = "#067F80"
-TURQ = "#D7F1EC"
-YELLOW = "#F6C96B"
-PAPER = "#FCFCF8"
-INK = "#253B4C"
-MUTED = "#526B79"
-PINK = "#FCE8DF"
-BLUE = "#E4F2FC"
-FONT_PAIRS = [
-    ("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-     "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"),
+BASE = Path(__file__).resolve().parent
+OUT = BASE / "infografias"
+OUT.mkdir(exist_ok=True)
+A = json.loads((BASE / "resultados/auditoria.json").read_text(encoding="utf8"))
+S = json.loads((BASE / "resultados/resumen.json").read_text(encoding="utf8"))["indicadores"]
+W, H = 1080, 1600
+NAVY, INK, TEAL = "#19384D", "#244052", "#087F7C"
+MUTED, BG = "#526C78", "#F8FAF7"
+MINT, SKY, PEACH, SUN, LILAC = "#DDF4ED", "#E8F4FA", "#FCEADD", "#FFECC5", "#EEEAFB"
+WHITE, LINE = "#FFFFFF", "#D7E5E1"
+FONTS = [
+    ("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"),
     ("C:/Windows/Fonts/arial.ttf", "C:/Windows/Fonts/arialbd.ttf"),
-    ("/System/Library/Fonts/Supplemental/Arial.ttf",
-     "/System/Library/Fonts/Supplemental/Arial Bold.ttf"),
+    ("/System/Library/Fonts/Supplemental/Arial.ttf", "/System/Library/Fonts/Supplemental/Arial Bold.ttf"),
 ]
-FONT, BOLD = next(((a,b) for a,b in FONT_PAIRS if Path(a).exists() and Path(b).exists()), (None,None))
-if FONT is None:
-    raise FileNotFoundError("Instala DejaVu Sans o Arial para generar las infografías")
+REGULAR, BOLD = next(((a,b) for a,b in FONTS if Path(a).exists() and Path(b).exists()), (None,None))
+if not REGULAR:
+    raise FileNotFoundError("Se requiere DejaVu Sans o Arial")
 
-def f(size, bold=False): return ImageFont.truetype(BOLD if bold else FONT, size)
-def centered(d, text, y, font, fill, box=(0,W)):
-    width = d.textbbox((0,0),text,font=font)[2]
-    d.text((box[0]+(box[1]-box[0]-width)/2,y),text,font=font,fill=fill)
-def line(d, text, x,y, size=31, color=INK, bold=False): d.text((x,y),text,font=f(size,bold),fill=color)
-def rect(d, box, fill, radius=30, outline=None, width=2): d.rounded_rectangle(box,radius=radius,fill=fill,outline=outline,width=width)
-def pct(v): return f"{v:.2f}".replace(".",",") + " %"
+def font(n, bold=False): return ImageFont.truetype(BOLD if bold else REGULAR, n)
+def txt(d, x, y, value, n=28, color=INK, bold=False):
+    d.text((x,y), value, font=font(n,bold), fill=color)
+def center(d, y, value, n=28, color=INK, bold=False, left=0, right=W):
+    width=d.textbbox((0,0),value,font=font(n,bold))[2]
+    txt(d, left+(right-left-width)/2,y,value,n,color,bold)
+def rr(d, box, fill, r=28, outline=None, width=2):
+    d.rounded_rectangle(box, radius=r, fill=fill, outline=outline, width=width)
+def fmt(v): return f"{v:.2f}".replace(".",",")+" %"
+def bar(d, x,y,w,value,maxval=100,color=TEAL):
+    rr(d,(x,y,x+w,y+19),"#E3EBEA",10)
+    rr(d,(x,y,x+max(10,round(w*value/maxval)),y+19),color,10)
 
-def icon(d, name, x, y, scale=1):
-    """Dibujos sencillos de apoyo, sin codificar cantidades."""
-    def oval(b,c): d.ellipse(tuple(int(x+z*scale) if i%2==0 else int(y+z*scale) for i,z in enumerate(b)),fill=c)
-    def box(b,c,r=8):
-        x0,y0,x1,y1=b;rect(d,(x+x0*scale,y+y0*scale,x+x1*scale,y+y1*scale),c,r*scale)
-    if name=="people":
-        for a,b,c in [(8,40,YELLOW),(64,10,TURQ),(118,42,PINK)]:
-            oval((a,b,a+39,b+39),c); box((a-5,b+43,a+44,b+112),c,18)
-    elif name=="speech":
-        box((4,12,148,92),TURQ,23); d.polygon([(x+35*scale,y+88*scale),(x+25*scale,y+119*scale),(x+70*scale,y+89*scale)],fill=TURQ)
-        for a in (42,75,108): oval((a,46,a+11,57),NAVY)
-    elif name=="health":
-        oval((10,10,139,139),TURQ); box((58,35,90,112),TEAL,5);box((36,57,112,89),TEAL,5)
-    elif name=="work":
-        box((7,47,152,133),TURQ,13);box((57,23,104,56),YELLOW,9);box((76,49,86,128),NAVY,3)
-    elif name=="shop":
-        box((10,50,147,137),TURQ,8);d.polygon([(x+5*scale,y+50*scale),(x+151*scale,y+50*scale),(x+133*scale,y+22*scale),(x+23*scale,y+22*scale)],fill=YELLOW)
-        box((61,80,96,137),PAPER,4)
+def person(d,x,y,s=1,skin="#C98161",shirt="#F8C36C",pants=NAVY,hair=NAVY,skirt=False):
+    """Personaje ilustrado; no representa una categoría ni un conteo."""
+    p=lambda xx,yy:(round(x+xx*s),round(y+yy*s))
+    thick=max(2,round(3*s))
+    d.ellipse((*p(16,3),*p(65,52)),fill=skin,outline=NAVY,width=thick)
+    d.pieslice((*p(14,-4),*p(67,39)),180,355,fill=hair)
+    d.ellipse((*p(33,32),*p(36,35)),fill=NAVY)
+    d.ellipse((*p(51,32),*p(54,35)),fill=NAVY)
+    d.arc((*p(35,35),*p(54,47)),10,160,fill=NAVY,width=thick)
+    d.rounded_rectangle((*p(1,54),*p(81,126)),radius=round(17*s),fill=shirt,outline=NAVY,width=thick)
+    d.line([p(11,67),p(-8,116)],fill=skin,width=max(5,round(13*s)))
+    d.line([p(71,67),p(92,115)],fill=skin,width=max(5,round(13*s)))
+    if skirt:
+        d.polygon([p(13,121),p(68,121),p(82,172),p(0,172)],fill=pants)
+        d.line([p(20,172),p(16,196)],fill=NAVY,width=max(5,round(10*s)))
+        d.line([p(62,172),p(66,196)],fill=NAVY,width=max(5,round(10*s)))
+    else:
+        d.rounded_rectangle((*p(5,120),*p(76,169)),radius=round(6*s),fill=pants)
+        d.line([p(24,168),p(20,196)],fill=NAVY,width=max(5,round(11*s)))
+        d.line([p(58,168),p(62,196)],fill=NAVY,width=max(5,round(11*s)))
+    d.line([p(6,197),p(30,197)],fill=NAVY,width=max(4,round(7*s)))
+    d.line([p(52,197),p(77,197)],fill=NAVY,width=max(4,round(7*s)))
 
-def base(number, title1, title2, icon_name, source):
-    im=Image.new("RGB",(W,H),PAPER); d=ImageDraw.Draw(im)
-    d.rectangle((0,0,W,342),fill=NAVY)
-    d.polygon([(0,319),(220,285),(530,337),(780,300),(W,334),(W,365),(0,365)],fill="#236068")
-    line(d,"UNA MIRADA A NUESTRA COMUNIDAD",55,46,26,TURQ,True)
-    line(d,f"{number} / 5",932,45,29,YELLOW,True)
-    line(d,title1,55,125,53,PAPER,True)
-    line(d,title2,55,193,53,PAPER,True)
-    line(d,"San Pedro Mixtepec #22 · Oaxaca · EIC 2025",55,288,27,PAPER)
-    icon(d,icon_name,873,130,.9)
-    d.line((53,1195,1027,1195),fill="#C9DAD8",width=3)
-    line(d,"Fuente: INEGI · personas20.csv · CVEGEO 20318",55,1222,22,MUTED,True)
-    line(d,source,55,1260,20,MUTED)
-    line(d,"Estimaciones ponderadas · lectura y fuentes: FUENTES_INEGI.md",55,1298,19,MUTED)
+def bubble(d,x,y,s=1,fill=WHITE):
+    p=lambda a,b:(round(x+a*s),round(y+b*s))
+    d.rounded_rectangle((*p(0,0),*p(120,76)),radius=round(24*s),fill=fill,outline=NAVY,width=max(2,round(3*s)))
+    d.polygon([p(22,71),p(16,101),p(50,74)],fill=fill)
+    for xx in (32,60,88): d.ellipse((*p(xx,32),*p(xx+8,40)),fill=TEAL)
+
+def clinic(d,x,y,s=1):
+    p=lambda a,b:(round(x+a*s),round(y+b*s))
+    d.rounded_rectangle((*p(10,36),*p(172,176)),radius=round(14*s),fill=WHITE,outline=NAVY,width=max(2,round(3*s)))
+    d.rectangle((*p(50,10),*p(134,52)),fill="#F9C578",outline=NAVY,width=max(2,round(3*s)))
+    d.rectangle((*p(80,14),*p(105,48)),fill=TEAL)
+    d.rectangle((*p(68,25),*p(116,37)),fill=TEAL)
+    for xx in (32,127):
+        d.rounded_rectangle((*p(xx,74),*p(xx+25,109)),radius=round(5*s),fill=SKY,outline=NAVY,width=max(2,round(2*s)))
+    d.rounded_rectangle((*p(76,115),*p(112,176)),radius=round(6*s),fill=MINT,outline=NAVY,width=max(2,round(3*s)))
+
+def briefcase(d,x,y,s=1):
+    p=lambda a,b:(round(x+a*s),round(y+b*s))
+    d.rounded_rectangle((*p(0,33),*p(124,117)),radius=round(12*s),fill="#F5BE72",outline=NAVY,width=max(2,round(4*s)))
+    d.arc((*p(39,1),*p(84,63)),180,360,fill=NAVY,width=max(3,round(7*s)))
+    d.line([p(0,68),p(124,68)],fill=NAVY,width=max(2,round(3*s)))
+    d.rounded_rectangle((*p(52,60),*p(72,78)),radius=round(3*s),fill=WHITE,outline=NAVY,width=max(2,round(2*s)))
+
+def shop(d,x,y,s=1):
+    p=lambda a,b:(round(x+a*s),round(y+b*s))
+    d.rounded_rectangle((*p(11,63),*p(169,171)),radius=round(7*s),fill=WHITE,outline=NAVY,width=max(2,round(3*s)))
+    d.polygon([p(0,63),p(21,22),p(161,22),p(180,63)],fill="#F4BE70",outline=NAVY,width=max(2,round(3*s)))
+    for i,fill in enumerate((PEACH,WHITE,PEACH,WHITE,PEACH)):
+        d.rectangle((*p(9+i*33,50),*p(42+i*33,76)),fill=fill,outline=NAVY,width=max(2,round(2*s)))
+    d.rectangle((*p(27,100),*p(76,140)),fill=SKY,outline=NAVY,width=max(2,round(2*s)))
+    d.rectangle((*p(113,99),*p(150,171)),fill=MINT,outline=NAVY,width=max(2,round(2*s)))
+
+def plate(d,x,y,s=1):
+    p=lambda a,b:(round(x+a*s),round(y+b*s))
+    d.ellipse((*p(19,29),*p(153,163)),fill=WHITE,outline=NAVY,width=max(2,round(4*s)))
+    d.ellipse((*p(44,54),*p(128,138)),fill=SUN,outline=TEAL,width=max(2,round(3*s)))
+    d.ellipse((*p(70,79),*p(104,113)),fill="#F3A36D")
+    d.line([p(0,45),p(0,150)],fill=NAVY,width=max(3,round(5*s)))
+    for xx in (-12,0,12): d.line([p(xx,45),p(xx,90)],fill=NAVY,width=max(2,round(3*s)))
+    d.line([p(173,45),p(173,152)],fill=NAVY,width=max(3,round(6*s)))
+
+def building(d,x,y,s=1):
+    p=lambda a,b:(round(x+a*s),round(y+b*s))
+    d.rectangle((*p(20,39),*p(154,173)),fill=SKY,outline=NAVY,width=max(2,round(4*s)))
+    d.polygon([p(8,43),p(87,0),p(167,43)],fill="#F7C46D",outline=NAVY,width=max(2,round(3*s)))
+    for xx in (42,102):
+        for yy in (63,105): d.rectangle((*p(xx,yy),*p(xx+28,yy+27)),fill=WHITE,outline=NAVY,width=max(2,round(2*s)))
+    d.rectangle((*p(78,135),*p(103,173)),fill=MINT,outline=NAVY,width=max(2,round(2*s)))
+
+def base(number, title1, title2, mark):
+    im=Image.new("RGB",(W,H),BG); d=ImageDraw.Draw(im)
+    d.rectangle((0,0,W,324),fill=NAVY)
+    d.ellipse((895,35,1010,150),fill="#F8C568")
+    d.polygon([(0,305),(168,282),(370,305),(565,275),(771,309),(952,275),(1080,302),(1080,328),(0,328)],fill="#20636A")
+    txt(d,54,35,"UNA MIRADA A NUESTRA COMUNIDAD",24,MINT,True)
+    txt(d,777,35,f"{number} / 5",27,"#F9CE74",True)
+    txt(d,54,104,title1,53,WHITE,True)
+    txt(d,54,170,title2,53,WHITE,True)
+    txt(d,55,264,"San Pedro Mixtepec #22  ·  Oaxaca  ·  EIC 2025",25,WHITE)
+    # Escena decorativa pequeña, reconocible en cada portada.
+    if mark=="people":
+        person(d,841,126,.63,"#C88E71","#F5C569")
+        person(d,910,104,.76,"#A97858",MINT)
+    elif mark=="speech":
+        bubble(d,851,132,1.08,MINT)
+    elif mark=="health":
+        clinic(d,855,103,.86)
+    elif mark=="work":
+        briefcase(d,873,153,1.0)
+    else:
+        shop(d,869,115,.82)
+    d.line((52,1452,1027,1452),fill=LINE,width=3)
+    txt(d,54,1471,"FUENTE  ·  INEGI, EIC 2025 · personas20.csv · CVEGEO 20318",21,NAVY,True)
+    txt(d,54,1507,"Estimaciones ponderadas; universos indicados en cada gráfico.",20,MUTED)
+    txt(d,54,1542,"Cálculo y celdas oficiales: FUENTES_INEGI.md · clave 20318",19,MUTED)
     return im,d
 
-def bar(d,x,y,length,val,maxval=100,color=TEAL,width=650):
-    rect(d,(x,y,x+width,y+24),"#E8F0EF",12)
-    rect(d,(x,y,x+max(8,width*val/maxval),y+24),color,12)
-
 def save(im,name):
-    path=DEST/name
-    im.quantize(colors=128,method=Image.Quantize.FASTOCTREE).save(path,optimize=True)
+    path=OUT/name
+    im.save(path,optimize=True)
     print(path)
 
-def graphic1():
-    im,d=base("1","Edades de la","población","people","Control INEGI: POBTOT, POB0_14 y POB65_MAS; hoja y celdas en FUENTES_INEGI.md")
-    rect(d,(48,371,1032,1157),"#FFFFFF",outline="#D2E3E2")
-    line(d,"57 844",88,398,81,TEAL,True)
-    line(d,"habitantes estimados",465,445,31,INK,True)
-    line(d,"Distribución por grupos de edad",88,543,35,NAVY,True)
-    groups=[("0 a 14",SUMMARY["edad_0-14"]["porcentaje"]),
-            ("15 a 29",SUMMARY["edad_15-29"]["porcentaje"]),
-            ("30 a 44",SUMMARY["edad_30-44"]["porcentaje"]),
-            ("45 a 64",SUMMARY["edad_45-64"]["porcentaje"]),
-            ("65 y más",SUMMARY["edad_65+"]["porcentaje"])]
-    for i,(label,v) in enumerate(groups):
-        y=627+i*82
-        line(d,label,88,y,28,INK,True)
-        bar(d,285,y+10,0,v,27,YELLOW if i==4 else TEAL,527)
-        line(d,pct(v),839,y,27,NAVY,True)
-    rect(d,(82,1058,998,1135),TURQ,18)
-    centered(d,"Menores de 15: 13 267 · 65 y más: 4 365",1081,f(26,True),NAVY)
+def ages():
+    im,d=base(1,"¿Cuántos somos","y qué edades tenemos?","people")
+    rr(d,(48,350,1032,635),WHITE,30,LINE)
+    txt(d,84,384,"POBLACIÓN ESTIMADA",25,TEAL,True)
+    txt(d,83,428,"57 844",83,TEAL,True)
+    txt(d,89,541,"personas en el municipio",28,INK,True)
+    person(d,727,405,.86,"#CA8869","#F7C876")
+    person(d,822,421,.78,"#A86C4F",MINT)
+    person(d,913,444,.67,"#E4B08D","#E9B1A2")
+    rr(d,(48,658,1032,1418),WHITE,30,LINE)
+    txt(d,85,690,"Una comunidad de muchas edades",35,NAVY,True)
+    txt(d,85,746,"Porcentaje de los 57 844 habitantes",24,MUTED)
+    groups=[
+        ("0 a 14 años",S["edad_0-14"]["porcentaje"],SUN),
+        ("15 a 29 años",S["edad_15-29"]["porcentaje"],SKY),
+        ("30 a 44 años",S["edad_30-44"]["porcentaje"],MINT),
+        ("45 a 64 años",S["edad_45-64"]["porcentaje"],PEACH),
+        ("65 años y más",S["edad_65+"]["porcentaje"],LILAC),
+    ]
+    for i,(label,value,color) in enumerate(groups):
+        y=806+i*105
+        rr(d,(78,y,1000,y+91),color,20)
+        d.ellipse((99,y+17,143,y+61),fill="#F9CE9E",outline=NAVY,width=2)
+        rr(d,(103,y+58,139,y+79),TEAL if i<4 else "#806DA3",9)
+        txt(d,164,y+17,label,28,NAVY,True)
+        bar(d,164,y+60,565,value,30,TEAL if i<4 else "#806DA3")
+        txt(d,791,y+28,fmt(value),30,NAVY,True)
+    rr(d,(80,1344,1000,1399),MINT,16)
+    center(d,1356,"Menores de 15: 13 267  ·  65 y más: 4 365",25,NAVY,True)
     save(im,"01_edades.png")
 
-def graphic2():
-    im,d=base("2","Identidad y","lengua indígena","speech","Control INEGI: PCN_POB_IND y PCN_P3YM_HLI; bases de distinta edad")
-    rect(d,(48,377,1032,1165),"#FFFFFF",outline="#D2E3E2")
-    rect(d,(79,409,1001,705),TURQ,26)
-    line(d,pct(AUDIT["indigena"][1]),113,448,79,TEAL,True)
-    line(d,"se considera indígena",113,557,39,NAVY,True)
-    line(d,"23 777 de 57 844 personas",113,624,27,MUTED)
-    rect(d,(79,737,1001,1002),BLUE,26)
-    line(d,pct(AUDIT["habla_lengua_3mas"][1]),113,779,79,NAVY,True)
-    line(d,"habla una lengua indígena",113,888,38,NAVY,True)
-    line(d,"2 277 de 55 647 personas de 3 años y más",113,950,25,MUTED)
-    rect(d,(79,1032,1001,1134),"#FFF5DD",18)
-    line(d,"Son preguntas y grupos de edad distintos.",108,1053,29,NAVY,True)
-    line(d,"No se restan ni se interpretan como el mismo grupo.",108,1094,22,MUTED)
+def identity():
+    im,d=base(2,"Identidad y lengua","indígena","speech")
+    rr(d,(48,350,1032,850),MINT,30)
+    rr(d,(73,373,1007,827),WHITE,25)
+    txt(d,102,404,"AUTOADSCRIPCIÓN INDÍGENA",24,TEAL,True)
+    txt(d,101,462,fmt(A["indigena"][1]),80,TEAL,True)
+    txt(d,102,572,"se considera indígena",37,NAVY,True)
+    txt(d,103,644,"23 777 de 57 844 personas",27,MUTED)
+    person(d,711,424,.76,"#B87352","#F4C16B")
+    person(d,817,466,.68,"#8B6048","#92D5C6")
+    rr(d,(48,876,1032,1276),SKY,30)
+    txt(d,88,911,"LENGUA INDÍGENA",24,TEAL,True)
+    txt(d,85,964,fmt(A["habla_lengua_3mas"][1]),75,NAVY,True)
+    txt(d,87,1065,"la habla",38,NAVY,True)
+    txt(d,88,1132,"2 277 de 55 647 personas de 3 años y más",26,MUTED)
+    bubble(d,800,950,1.25,WHITE)
+    rr(d,(72,1300,1008,1415),SUN,22)
+    txt(d,100,1318,"Dos preguntas y dos universos distintos.",27,NAVY,True)
+    txt(d,100,1364,"No se restan ni equivalen al mismo grupo.",24,MUTED)
     save(im,"02_identidad_lengua.png")
 
-def graphic3():
-    im,d=base("3","Servicios de","salud","health","Control INEGI: PCN_PSINDER y PCN_PUSU_IPRIV; denominadores visibles")
-    rect(d,(48,377,1032,1165),"#FFFFFF",outline="#D2E3E2")
-    rect(d,(80,409,1000,720),PINK,26)
-    line(d,pct(AUDIT["sin_afiliacion"][1]),112,447,79,NAVY,True)
-    line(d,"sin afiliación declarada",112,556,35,NAVY,True)
-    line(d,"30 402 de 57 844 personas",112,619,27,MUTED)
-    bar(d,112,676,0,52.56,100,TEAL,816)
-    rect(d,(80,745,1000,1045),BLUE,26)
-    line(d,pct(AUDIT["atencion_privada_todos"][1]),112,783,79,TEAL,True)
-    line(d,"se atiende en servicios privados",112,894,31,NAVY,True)
-    line(d,"21 348 de 57 844 personas",112,952,26,MUTED)
-    line(d,"Entre usuarios de algún servicio: 37,82 % (INEGI).",112,1000,22,MUTED)
-    rect(d,(80,1070,1000,1138),"#FFF5DD",18)
-    centered(d,"Afiliación y lugar de atención son preguntas diferentes.",1088,f(24,True),NAVY)
+def health():
+    im,d=base(3,"¿Cómo se relacionan","con la salud?","health")
+    rr(d,(48,350,1032,850),PEACH,30)
+    txt(d,84,389,"AFILIACIÓN DECLARADA",25,TEAL,True)
+    txt(d,84,446,fmt(A["sin_afiliacion"][1]),78,NAVY,True)
+    txt(d,88,550,"sin afiliación a servicios de salud",31,NAVY,True)
+    txt(d,88,620,"30 402 de 57 844 personas",27,MUTED)
+    rr(d,(695,668,965,809),WHITE,20)
+    d.rounded_rectangle((750,682,910,789),radius=14,fill=SUN,outline=NAVY,width=4)
+    d.ellipse((767,704,815,751),fill="#D18B6F",outline=NAVY,width=3)
+    d.line([(833,718),(890,718)],fill=TEAL,width=8)
+    d.line([(833,742),(876,742)],fill=TEAL,width=7)
+    txt(d,90,736,"La afiliación no determina por sí sola",25,INK,True)
+    txt(d,90,777,"dónde se recibe atención.",25,INK,True)
+    rr(d,(48,876,1032,1285),SKY,30)
+    txt(d,85,911,"LUGAR DE ATENCIÓN",25,TEAL,True)
+    txt(d,84,965,fmt(A["atencion_privada_todos"][1]),76,TEAL,True)
+    txt(d,88,1066,"se atiende en servicios privados",31,NAVY,True)
+    txt(d,88,1136,"21 348 de 57 844 personas",27,MUTED)
+    clinic(d,820,939,.78)
+    rr(d,(72,1310,1008,1414),SUN,22)
+    txt(d,98,1323,"Entre quienes usan algún servicio:",26,NAVY,True)
+    txt(d,98,1363,"37,82 %  ·  21 348 de 56 452 (INEGI)",25,NAVY,True)
     save(im,"03_salud.png")
 
-def graphic4():
-    im,d=base("4","Participación y","trabajo","work","PEA por sexo de 12+; prestación entre asalariados · cálculo propio")
-    rect(d,(48,377,1032,1165),"#FFFFFF",outline="#D2E3E2")
-    line(d,"Participación económica, 12 años y más",83,421,33,NAVY,True)
-    line(d,"Mujeres",84,505,30,INK,True)
-    line(d,pct(AUDIT["participacion_mujeres_12mas"][1]),771,500,31,TEAL,True)
-    bar(d,84,555,0,53.26,100,TEAL,902)
-    line(d,"13 450 de 25 253",84,589,23,MUTED)
-    line(d,"Hombres",84,660,30,INK,True)
-    line(d,pct(AUDIT["participacion_hombres_12mas"][1]),771,655,31,NAVY,True)
-    bar(d,84,710,0,77.72,100,NAVY,902)
-    line(d,"17 357 de 22 333",84,744,23,MUTED)
-    rect(d,(83,814,997,905),TURQ,22)
-    gap=AUDIT["participacion_hombres_12mas"][1]-AUDIT["participacion_mujeres_12mas"][1]
-    centered(d,f"Diferencia descriptiva: {gap:.2f} puntos".replace(".",","),838,f(31,True),NAVY)
-    rect(d,(83,936,997,1136),"#FFF4D9",22)
-    line(d,pct(AUDIT["servicio_medico_laboral"][1]),108,963,58,TEAL,True)
-    line(d,"declara servicio médico",433,978,29,NAVY,True)
-    line(d,"por su trabajo",433,1018,29,NAVY,True)
-    line(d,"5 450 de 18 999 personas asalariadas",108,1088,25,MUTED)
+def work():
+    im,d=base(4,"Participación en","el trabajo","work")
+    rr(d,(48,350,1032,494),WHITE,27,LINE)
+    txt(d,84,379,"PARTICIPACIÓN ECONÓMICA",31,NAVY,True)
+    txt(d,85,428,"Personas de 12 años y más, según sexo",25,MUTED)
+    for x,fill,title,code,numerator,denominator,skin,shirt in [
+        (48,PEACH,"Mujeres","participacion_mujeres_12mas","13 450","25 253","#B77555","#F5C16E"),
+        (551,SKY,"Hombres","participacion_hombres_12mas","17 357","22 333","#A57052","#84CFC0"),
+    ]:
+        rr(d,(x,518,x+481,1059),fill,27)
+        person(d,x+335,566,.92,skin,shirt,skirt=(title=="Mujeres"))
+        txt(d,x+34,555,title,33,NAVY,True)
+        txt(d,x+33,787,fmt(A[code][1]),57,TEAL,True)
+        bar(d,x+34,881,412,A[code][1],100)
+        txt(d,x+34,930,f"{numerator} de {denominator}",23,MUTED)
+    rr(d,(48,1083,1032,1279),SUN,28)
+    rr(d,(80,1118,180,1219),WHITE,22)
+    d.rounded_rectangle((110,1153,151,1191),radius=5,fill=TEAL)
+    d.rectangle((125,1140,136,1203),fill=TEAL)
+    txt(d,207,1108,fmt(A["servicio_medico_laboral"][1]),53,TEAL,True)
+    txt(d,209,1175,"declara servicio médico por su trabajo",26,NAVY,True)
+    txt(d,209,1222,"5 450 de 18 999 personas asalariadas",24,MUTED)
+    rr(d,(73,1303,1007,1415),MINT,20)
+    txt(d,100,1324,"Brecha descriptiva: 24,46 puntos.",26,NAVY,True)
+    txt(d,100,1366,"No atribuye causas a la diferencia.",23,MUTED)
     save(im,"04_trabajo.png")
 
-def graphic5():
-    im,d=base("5","Sectores de","actividad","shop","Claves 46, 72, 23 de ACTIVIDADES_C; 30 544 personas ocupadas")
-    rect(d,(48,377,1032,1165),"#FFFFFF",outline="#D2E3E2")
-    rect(d,(80,408,1000,632),TURQ,26)
-    line(d,pct(AUDIT["tres_sectores"][1]),109,448,84,TEAL,True)
-    line(d,"en tres sectores del negocio",110,553,31,NAVY,True)
-    line(d,"14 312 de 30 544 personas ocupadas",84,658,26,MUTED)
-    groups=[("Comercio minorista",AUDIT["sectores"]["46"][1],"5 657"),
-            ("Alojamiento y alimentos",AUDIT["sectores"]["72"][1],"5 010"),
-            ("Construcción",AUDIT["sectores"]["23"][1],"3 645")]
-    for i,(label,v,n) in enumerate(groups):
-        y=724+i*121
-        line(d,label,84,y,31,INK,True)
-        line(d,pct(v),817,y,29,NAVY,True)
-        bar(d,84,y+48,0,v,20,TEAL if i<2 else YELLOW,738)
-        line(d,n,844,y+49,24,MUTED)
-    rect(d,(82,1093,998,1150),"#FFF5DD",16)
-    centered(d,"Se clasifica el negocio; no el oficio ni el turismo.",1108,f(23,True),NAVY)
+def sectors():
+    im,d=base(5,"¿En qué sectores","trabajan?","shop")
+    rr(d,(48,350,1032,618),MINT,30)
+    txt(d,84,380,"PERSONAS OCUPADAS",24,TEAL,True)
+    txt(d,82,425,fmt(A["tres_sectores"][1]),78,TEAL,True)
+    txt(d,85,532,"14 312 de 30 544 en estos tres sectores",29,NAVY,True)
+    groups=[
+        ("Comercio minorista",A["sectores"]["46"][1],"5 657",SUN,shop),
+        ("Alojamiento y alimentos",A["sectores"]["72"][1],"5 010",PEACH,plate),
+        ("Construcción",A["sectores"]["23"][1],"3 645",SKY,building),
+    ]
+    for i,(name,value,count,fill,illustrate) in enumerate(groups):
+        y=646+i*223
+        rr(d,(48,y,1032,y+201),fill,26)
+        rr(d,(72,y+21,250,y+179),WHITE,20)
+        illustrate(d,80,y+18,.88)
+        txt(d,285,y+28,name,30,NAVY,True)
+        txt(d,284,y+79,fmt(value),42,TEAL,True)
+        bar(d,285,y+141,620,value,20)
+        txt(d,924,y+131,count,23,MUTED,True)
+    rr(d,(72,1335,1008,1416),SUN,20)
+    txt(d,99,1351,"Se clasifica el negocio donde trabaja la persona;",23,NAVY,True)
+    txt(d,99,1382,"no su oficio ni la actividad turística directamente.",22,MUTED)
     save(im,"05_sectores.png")
 
-if __name__=="__main__":
-    for make in (graphic1,graphic2,graphic3,graphic4,graphic5): make()
+if __name__ == "__main__":
+    for fn in (ages,identity,health,work,sectors): fn()
