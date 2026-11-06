@@ -1516,19 +1516,37 @@ ${U.shaderPreludeCode.vertexSource}`,define:U.shaderDefine},defaultProjectionDat
         @media(max-width:850px){
   /* --- FIX MÓVIL: el mapa ya no tapa la lista --- */
 @media(max-width:850px){
-  header{position:sticky;top:0;z-index:1000;padding:10px 12px !important}
-  header h1{font-size:17px !important;line-height:1.2}
+  header{position:sticky;top:0;z-index:1000;padding:10px 12px !important;display:flex !important;align-items:center !important;gap:10px !important}
+  header h1{flex:1;font-size:17px !important;line-height:1.2}
   header span{font-size:12px !important}
   main{flex-direction:row !important;flex:1 !important;min-height:0 !important;overflow:hidden !important}
   #map{height:calc(100dvh - 96px) !important;min-height:0 !important;flex:1 !important}
-  aside{position:fixed !important;top:0;left:0;bottom:0;width:min(360px,88vw) !important;height:100dvh !important;transform:translateX(-105%);transition:transform .25s ease;z-index:3000;box-shadow:6px 0 24px rgba(0,0,0,.3);background:#fff}
+
+  /* Cajón lateral */
+  aside{position:fixed !important;top:0;left:0;bottom:0;width:min(360px,88vw) !important;height:100dvh !important;flex:none !important;transform:translateX(-105%);transition:transform .25s ease;z-index:3000;box-shadow:6px 0 24px rgba(0,0,0,.3);background:#fff;pointer-events:auto !important}
   body.drawer-open aside{transform:translateX(0)}
   #overlay-movil{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:2990;display:none}
   body.drawer-open #overlay-movil{display:block}
+  aside .pane{flex:none !important}
   aside .list{display:none !important}
+
+  /* FIX FUNCIONALIDAD: que los selects sí se puedan tocar */
+  aside select, aside input, aside button, aside a{pointer-events:auto !important;touch-action:manipulation}
+  aside .ctl{position:relative;z-index:3100}
+
+  /* Leyenda chiquita */
   .leg{left:auto !important;right:10px !important;bottom:10px !important;top:auto !important;max-width:70%;font-size:11px;padding:7px 10px}
-  #btn-hamburguesa{position:fixed;top:96px;left:12px;z-index:2500;background:#4a0e3a;color:#fff;border:0;border-radius:10px;width:46px;height:46px;font-size:22px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35)}
-  #btn-movil{display:none !important}
+
+  /* Botón hamburguesa DENTRO del header, no flotando */
+  #btn-hamburguesa{position:static !important;flex:none;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:8px;width:40px;height:40px;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  body.drawer-open #btn-hamburguesa{visibility:hidden}
+  #btn-cerrar-cajon{display:none}
+  body.drawer-open #btn-cerrar-cajon{display:flex;position:fixed;top:12px;right:12px;z-index:3100;background:#4a0e3a;color:#fff;border:0;border-radius:8px;width:40px;height:40px;font-size:22px;align-items:center;justify-content:center;cursor:pointer}
+
+  /* Detalle de obra siempre por encima */
+  #dr{z-index:4000 !important}
+
+  /* MODO RESUMEN: desplegado completo, sin mapa */
   body.modo-resumen #map{display:none !important}
   body.modo-resumen aside{transform:none !important;width:100% !important;height:100dvh !important}
   body.modo-resumen #overlay-movil{display:none !important}
@@ -1544,26 +1562,52 @@ ${U.shaderPreludeCode.vertexSource}`,define:U.shaderDefine},defaultProjectionDat
 </script>
   <script>(function(){function m(a){var h=a.getAttribute("href");if(!h)return;try{var u=new URL(h,document.baseURI);if(((u.protocol==="http:"||u.protocol==="https:")&&u.host!==location.host)||u.protocol==="mailto:"||u.protocol==="tel:"||u.protocol==="sms:"){a.target="_blank";a.rel="noopener noreferrer";}}catch(e){}}function s(){document.querySelectorAll("a[href]").forEach(m);}if(document.readyState!=="loading"){s();}else{document.addEventListener("DOMContentLoaded",s);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a){m(a);}},true);})();</script>
   <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script>
-
 <script>
 (function(){
   if(window.innerWidth>850) return;
   if(document.getElementById('btn-hamburguesa')) return;
+
+  // 1. Botón dentro del header
+  var header=document.querySelector('header');
   var btn=document.createElement('button');
   btn.id='btn-hamburguesa';
   btn.innerHTML='☰';
   btn.setAttribute('aria-label','Abrir menú');
-  document.body.appendChild(btn);
+  if(header) header.insertBefore(btn, header.firstChild);
+  else document.body.appendChild(btn);
+
+  // 2. X para cerrar
+  var btnCerrar=document.createElement('button');
+  btnCerrar.id='btn-cerrar-cajon';
+  btnCerrar.innerHTML='×';
+  document.body.appendChild(btnCerrar);
+
   var overlay=document.createElement('div');
   overlay.id='overlay-movil';
   document.body.appendChild(overlay);
+
   function abrir(){ document.body.classList.add('drawer-open'); }
-  function cerrar(){ document.body.classList.remove('drawer-open'); }
-  btn.onclick=function(e){ e.stopPropagation(); if(document.body.classList.contains('drawer-open')) cerrar(); else abrir(); };
+  function cerrar(){
+    document.body.classList.remove('drawer-open');
+    // Que el mapa se redibuje al cerrar el cajón, si no queda gris
+    setTimeout(function(){
+      window.dispatchEvent(new Event('resize'));
+      var mapEl=document.getElementById('map');
+      if(mapEl) mapEl.style.display='block';
+    }, 100);
+  }
+  btn.onclick=function(e){ e.stopPropagation(); abrir(); };
+  btnCerrar.onclick=cerrar;
   overlay.onclick=cerrar;
-  var tabs=document.querySelectorAll('.tabs button');
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
+
+  // 3. FIX FUNCIONALIDAD: delegación, no evento directo
+  // React vuelve a crear los botones cada que cambias de pestaña, por eso el evento directo se perdía.
+  // Con delegación en el contenedor .tabs, aunque React los recree, sigue funcionando.
+  var tabsContainer=document.querySelector('.tabs');
+  if(tabsContainer){
+    tabsContainer.addEventListener('click', function(e){
+      var tab=e.target.closest('button');
+      if(!tab) return;
       var texto=(tab.textContent||'').toUpperCase();
       if(texto.includes('RESUMEN')){
         document.body.classList.add('modo-resumen');
@@ -1574,8 +1618,40 @@ ${U.shaderPreludeCode.vertexSource}`,define:U.shaderDefine},defaultProjectionDat
         window.scrollTo({top:0});
       }
     });
+  }
+
+  // 4. FIX FUNCIONALIDAD: filtros sí cambian el mapa
+  // Cuando cambias un filtro, cierra el cajón y deja que React filtre, y redibuja el mapa
+  var aside=document.querySelector('aside');
+  if(aside){
+    aside.addEventListener('change', function(e){
+      var t=e.target;
+      if(t.tagName==='SELECT' || t.tagName==='INPUT'){
+        // No cerrar de golpe, dejar 300ms para que React guarde el filtro
+        setTimeout(function(){
+          if(!document.body.classList.contains('modo-resumen')) cerrar();
+        }, 300);
+      }
+    });
+    // El botón Restablecer también debe cerrar y redibujar
+    aside.addEventListener('click', function(e){
+      if(e.target.closest('a[data-reset]') || (e.target.textContent||'').includes('Restablecer')){
+        setTimeout(cerrar, 300);
+      }
+    });
+  }
+
+  // 5. Si abres una obra desde el mapa, esconder el botón hamburguesa para que no tape la ficha
+  document.addEventListener('click', function(e){
+    var dr=document.getElementById('dr');
+    if(dr && dr.classList.contains('on')){
+      btn.style.visibility='hidden';
+    } else {
+      if(!document.body.classList.contains('drawer-open')) btn.style.visibility='visible';
+    }
   });
 })();
 </script>
+
 </body>
 </html>
