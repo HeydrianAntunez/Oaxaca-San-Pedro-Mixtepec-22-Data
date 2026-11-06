@@ -1515,25 +1515,25 @@ ${U.shaderPreludeCode.vertexSource}`,define:U.shaderDefine},defaultProjectionDat
         .badge-false{background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0}
         @media(max-width:850px){
   /* --- FIX MÓVIL: el mapa ya no tapa la lista --- */
-  header{position:sticky;top:0;padding:10px 12px !important;gap:4px !important}
+@media(max-width:850px){
+  header{position:sticky;top:0;z-index:1000;padding:10px 12px !important}
   header h1{font-size:17px !important;line-height:1.2}
   header span{font-size:12px !important}
-  main{flex-direction:column !important;overflow:visible !important;flex:none !important}
-  /* Mapa compacto y fijo arriba, para que la lista se vea al hacer un poco de scroll */
-  #map{height:52dvh !important;min-height:320px !important;max-height:52dvh !important;flex:none !important;position:sticky !important;top:0;z-index:20}
-  aside{width:100% !important;height:auto !important;min-height:0 !important;flex:none !important;border-right:0 !important;border-top:2px solid var(--ln)}
-  .tabs{position:sticky;top:0;z-index:30}
-  .tabs button{padding:12px 4px;font-size:13px}
-  .ctl{grid-template-columns:1fr 1fr}
-  .list{overflow:visible !important;flex:none !important}
-  .box{overflow:visible !important}
-  .leg{left:10px !important;bottom:auto !important;top:10px !important;right:auto !important;max-width:78%;font-size:12px;padding:8px 10px}
-  #dr{width:100% !important;padding:16px !important}
-  .it{padding:12px}
-  /* Botón flotante para saltar entre mapa y lista */
-  #btn-movil{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:3000;background:#4a0e3a;color:#fff;border:0;border-radius:999px;padding:13px 20px;font:inherit;font-weight:700;font-size:15px;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer;display:flex;gap:8px;align-items:center;white-space:nowrap}
-  #btn-movil:active{transform:translateX(-50%) scale(.97)}
-  body{padding-bottom:0}
+  main{flex-direction:row !important;flex:1 !important;min-height:0 !important;overflow:hidden !important}
+  #map{height:calc(100dvh - 96px) !important;min-height:0 !important;flex:1 !important}
+  aside{position:fixed !important;top:0;left:0;bottom:0;width:min(360px,88vw) !important;height:100dvh !important;transform:translateX(-105%);transition:transform .25s ease;z-index:3000;box-shadow:6px 0 24px rgba(0,0,0,.3);background:#fff}
+  body.drawer-open aside{transform:translateX(0)}
+  #overlay-movil{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:2990;display:none}
+  body.drawer-open #overlay-movil{display:block}
+  aside .list{display:none !important}
+  .leg{left:auto !important;right:10px !important;bottom:10px !important;top:auto !important;max-width:70%;font-size:11px;padding:7px 10px}
+  #btn-hamburguesa{position:fixed;top:96px;left:12px;z-index:2500;background:#4a0e3a;color:#fff;border:0;border-radius:10px;width:46px;height:46px;font-size:22px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+  #btn-movil{display:none !important}
+  body.modo-resumen #map{display:none !important}
+  body.modo-resumen aside{transform:none !important;width:100% !important;height:100dvh !important}
+  body.modo-resumen #overlay-movil{display:none !important}
+  body.modo-resumen aside .box{display:block !important;overflow:auto !important}
+  #dr{width:100% !important}
 }
         #dr{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:#fff;box-shadow:-6px 0 24px #0003;transform:translateX(105%);transition:transform .25s ease-in-out;z-index:2000;overflow:auto;padding:24px;font-size:16px}
         #dr.on{transform:none} #dr h2{font-size:19px;margin:6px 0 16px;color:var(--ink);text-transform:uppercase;line-height:1.3}
@@ -1545,40 +1545,37 @@ ${U.shaderPreludeCode.vertexSource}`,define:U.shaderDefine},defaultProjectionDat
   <script>(function(){function m(a){var h=a.getAttribute("href");if(!h)return;try{var u=new URL(h,document.baseURI);if(((u.protocol==="http:"||u.protocol==="https:")&&u.host!==location.host)||u.protocol==="mailto:"||u.protocol==="tel:"||u.protocol==="sms:"){a.target="_blank";a.rel="noopener noreferrer";}}catch(e){}}function s(){document.querySelectorAll("a[href]").forEach(m);}if(document.readyState!=="loading"){s();}else{document.addEventListener("DOMContentLoaded",s);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a){m(a);}},true);})();</script>
   <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script>
 
-  <script>
-  (function(){
-    if(window.innerWidth>850) return;
-    if(document.getElementById('btn-movil')) return;
-    var btn=document.createElement('button');
-    btn.id='btn-movil';
-    btn.innerHTML='☰ Ver lista / filtros';
-    btn.setAttribute('aria-label','Ver lista de obras');
-    var enLista=false;
-    btn.onclick=function(){
-      var aside=document.querySelector('aside');
-      var map=document.getElementById('map');
-      if(!aside) return;
-      if(!enLista){
-        aside.scrollIntoView({behavior:'smooth', block:'start'});
-        btn.innerHTML='🗺️ Ver mapa';
-        enLista=true;
+<script>
+(function(){
+  if(window.innerWidth>850) return;
+  if(document.getElementById('btn-hamburguesa')) return;
+  var btn=document.createElement('button');
+  btn.id='btn-hamburguesa';
+  btn.innerHTML='☰';
+  btn.setAttribute('aria-label','Abrir menú');
+  document.body.appendChild(btn);
+  var overlay=document.createElement('div');
+  overlay.id='overlay-movil';
+  document.body.appendChild(overlay);
+  function abrir(){ document.body.classList.add('drawer-open'); }
+  function cerrar(){ document.body.classList.remove('drawer-open'); }
+  btn.onclick=function(e){ e.stopPropagation(); if(document.body.classList.contains('drawer-open')) cerrar(); else abrir(); };
+  overlay.onclick=cerrar;
+  var tabs=document.querySelectorAll('.tabs button');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var texto=(tab.textContent||'').toUpperCase();
+      if(texto.includes('RESUMEN')){
+        document.body.classList.add('modo-resumen');
+        document.body.classList.add('drawer-open');
       } else {
-        if(map) map.scrollIntoView({behavior:'smooth', block:'start'});
-        else window.scrollTo({top:0, behavior:'smooth'});
-        btn.innerHTML='☰ Ver lista / filtros';
-        enLista=false;
+        document.body.classList.remove('modo-resumen');
+        cerrar();
+        window.scrollTo({top:0});
       }
-    };
-    document.body.appendChild(btn);
-    // Si el usuario hace scroll manual hacia la lista, cambiar el texto del botón
-    window.addEventListener('scroll', function(){
-      var aside=document.querySelector('aside');
-      if(!aside) return;
-      var r=aside.getBoundingClientRect();
-      if(r.top < window.innerHeight*0.5 && !enLista){ btn.innerHTML='🗺️ Ver mapa'; enLista=true; }
-      if(window.scrollY < 100 && enLista){ btn.innerHTML='☰ Ver lista / filtros'; enLista=false; }
-    }, {passive:true});
-  })();
-  </script>
+    });
+  });
+})();
+</script>
 </body>
 </html>
